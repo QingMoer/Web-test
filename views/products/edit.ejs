@@ -8,8 +8,8 @@
     <title>Produce Stand CRUD</title>
 </head>
 <body>
-<h1>Edit Details</h1>
-<a href="/products">Cancel</a>
+<h1 class="display-3" >Edit Details</h1>
+<a class="btn btn-danger" href="/products">Cancel</a>
 <p>Editing "<%= product.name %>"</p>
 <form action="/products/<%= product.id %>?_method=PUT" method="POST">
     <label for="productName">Product Name:</label>
@@ -25,7 +25,7 @@
                     %></option>
             <% } %>
     </select>
-    <button type="submit">Submit</button>
+    <button class="display-4" type="submit">Submit</button>
 
 </form>
 </body>

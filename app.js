@@ -9,6 +9,9 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
+
+// Passport Config
+require('./config/passport')(passport);
 // global middleware
 // 1. body-parser to parse request body
 // 2. override HTTP methods
@@ -32,7 +35,36 @@ mongoose.connect('mongodb://127.0.0.1:27017/login')
       console.log('Mongo Connection Error', err);
     });
 
+  // Express body parser
+app.use(express.urlencoded({ extended: true }));
+
+// Express session
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
 // routers
+
+app.use('/', require('./routes/index.js'));
+app.use('/users', require('./routes/users.js'));
 app.use('/', indexRouter);
 
 app.use('/products', productRouter);
@@ -67,24 +99,7 @@ app.use(
   })
 );
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
 
-// Connect flash
-app.use(flash());
-
-// Global variables
-app.use(function(req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  next();
-});
-
-// Routes
-app.use('/', require('./routes/index.js'));
-app.use('/users', require('./routes/users.js'));
 
 
 const PORT = process.env.PORT || 5000;

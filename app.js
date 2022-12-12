@@ -8,8 +8,7 @@ const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-
-
+app.use(express.static(path.join(__dirname, 'public')));
 // Passport Config
 require('./config/passport')(passport);
 // global middleware
@@ -27,7 +26,7 @@ const editRouter = require('./routes/edit.js');
 const createRouter = require('./routes/create.js');
 const deleteRouter = require('./routes/delete.js');
 
-mongoose.connect('mongodb://127.0.0.1:27017/login')
+mongoose.connect('mongodb+srv://root:rootmoer@cluster0.5z0oflj.mongodb.net/test')
     .then(() => {
       console.log('Mongo connection open');
     })

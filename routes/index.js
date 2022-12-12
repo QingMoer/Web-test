@@ -21,7 +21,7 @@ const categories = ['fruit', 'vegetables', 'dairy', 'other'];
 
 // get create page
 // get /new
-router.get('/new', async (req,res) => {
+router.get('/new', ensureAuthenticated,async (req,res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     res.render('products/create', { product, categories });

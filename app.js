@@ -1,17 +1,17 @@
 var express = require('express'); // import express
 var path = require('path'); // import path
 var routes = require('./routes/index');// import routes
-var port = 8000; // 命名端口号：8000
+var port = 8000; // name port：8000
  
-var app = express(); //实例化express
+var app = express(); //express
  
-var serveStatic = require('serve-static'); // 静态文件处理，css、图片之类的都在public
-app.use(serveStatic('public')); // 路径：public
+var serveStatic = require('serve-static'); // make html,css in public
+app.use(serveStatic('public')); // file：public
  
-app.set('views', path.join(__dirname, 'views'));//前端页面都在view页面下
+app.set('views', path.join(__dirname, 'views'));//user view in views flie
 app.set('view engine', 'ejs');
  
-app.listen(port); // 启动web服务。
+app.listen(port); // start web server
  
 
 routes(app);

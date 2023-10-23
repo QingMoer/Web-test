@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>My Home Pages</title>
+		<link rel="stylesheet" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/communication.css"/>
+	</head>
+	<body>
+		<%- include('header.ejs') %>
+		<!--2.左侧-->
+		<div id="left-box">
+			<div class="picture">
+				<a href="#"><img src="./images/picture.jpg"  alt=""/></a>
+				<h5><img src="./images/ps.png"  alt=""/>Canada</h5>
+			
+			</div>
+			<div class="message">
+				<span >
+					Personal information
+				</span>
+				<ul>
+					<li>My Name：Hao Song</li>
+					<li>21 years old</li>
+					<li>hobits：coding and play computer games</li>
+				
+					
+				</ul>	
+			</div>
+			
+		</div>
+		<div id="margin2">
+	    	
+	    </div>
+		<!--3.右侧-->
+		<div id="right-box">
+		
+				<div class="com2">
+					<p>How to contact you</p>
+					<div class="box2">
+						<form action="/addcommunication" method="get">						
+							<fieldset>
+							<legend></legend>							
+							<label>Your name：</label>
+							<input type="text"   />							
+							<label>Tel：</label>
+							<input type="text"   />							
+							<label>E-mail：</label>
+							<input type="text"   />									
+							</fieldset>	
+							<fieldset >
+							<legend style="margin-bottom: 20px;">comments：</legend>								
+								<textarea name=" " rows="9" cols="65"></textarea>										
+							</fieldset>								
+								<input type="button" class="sub"  value="submit"/>						
+						</form>
+						
+					
+				</div>
+			</div>
+			
+			
+			
+			
+		</div>
+		<div class="message">
+			
+		</div>
+		<div class="com1">
+
+
+			
+		</div>
+		
+		</div>
+		<div id="margin3">
+	    	
+	    </div>
+	
+		<%- include('footer.ejs') %>
+	</body>
+</html>

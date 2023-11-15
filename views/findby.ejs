@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>My Home Pages</title>
+		<link rel="stylesheet" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/views.css"/>
+	</head>
+	<body>
+		<%- include('partials/nav.ejs') %>
+		
+		<ul>
+   
+			<% for(let todo of todo_list) { %>
+			  <div class="card m-4 w-50">
+			  <li> 
+				<div class="card m-2"><h1 class="m-2"><%= todo.title %></h1> </div>
+				<div class="card m-2"><h1 class="m-1"><%= todo.text %></h1> </div>
+				<a href="/edit/<%= todo.id %>"><button class="btn btn-success m-1">Edit</button></a> 
+				<a href="/view/<%= todo.id %>"><button class="btn btn-success m-1">View</button></a>
+				<a href="/delete/<%= todo.id %>"><button class="btn  btn-danger m-1">Delete</button></a>
+			  </li>
+			</div>
+			<% } %>
+			
+		  </ul>
+		
+
+		
+		</div>
+		<div id="margin3">
+	    	
+	    </div>
+		</div>
+		<%- include('partials/footer.ejs') %>
+		
+	</body>
+</html>
